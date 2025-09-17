@@ -6,7 +6,6 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 
-var key = Encoding.ASCII.GetBytes("fedaf7d8863b48e197b9287d492b708e");
 var builder = WebApplication.CreateBuilder(args);
 builder.Services
     .AddAuthorization()
@@ -22,7 +21,7 @@ builder.Services
         x.TokenValidationParameters = new TokenValidationParameters
         {
             ValidateIssuerSigningKey = true,
-            IssuerSigningKey = new SymmetricSecurityKey(key),
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(Settings.Secret)),
             ValidateIssuer = false,
             ValidateAudience = false,
             ClockSkew = TimeSpan.Zero
@@ -63,7 +62,20 @@ namespace Inma.Api
     public record GetUserResponse(int Id, string Name);
     public static class Settings
     {
-        public static readonly string Secret = "fedaf7d8863b48e197b9287d492b708e";
+        public static readonly string? Secret = GetVariable("JWT_KEY_TOKEN");
+
+        private static string? GetVariable(string name)
+        {
+            string? apiKey = Environment.GetEnvironmentVariable("JWT_KEY_TOKEN");
+        
+            if (string.IsNullOrEmpty(apiKey))
+            {
+                throw new InvalidOperationException("DATABASE_URL não está configurada");
+            }
+
+            return apiKey;
+        }
+        
     }
 
     public class LoginService

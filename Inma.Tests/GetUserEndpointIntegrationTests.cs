@@ -10,11 +10,6 @@ using Shouldly;
 
 namespace Inma.Tests;
 
-public static class Configurations
-{
-    public static string Key { get; set; } = "nelson#123456";
-}
-
 public class ApiTests : IClassFixture<WebApplicationFactory<Program>>
 {
     protected readonly HttpClient Client;

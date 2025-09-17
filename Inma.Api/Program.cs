@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 
+
+DotNetEnv.Env.TraversePath().Load();
 var builder = WebApplication.CreateBuilder(args);
 builder.Services
     .AddAuthorization()
@@ -66,7 +68,7 @@ namespace Inma.Api
 
         private static string? GetVariable(string name)
         {
-            string? apiKey = Environment.GetEnvironmentVariable("JWT_KEY_TOKEN");
+            string? apiKey = Environment.GetEnvironmentVariable(name);
         
             if (string.IsNullOrEmpty(apiKey))
             {

@@ -16,6 +16,9 @@ public class ApiTests : IClassFixture<WebApplicationFactory<Program>>
 
     protected ApiTests(WebApplicationFactory<Program> factory)
     {
+        // Carrega o arquivo .env específico para testes
+        
+        DotNetEnv.Env.TraversePath().Load();
         Client = factory.WithWebHostBuilder(builder =>
         {
             builder.ConfigureServices(services =>

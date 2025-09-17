@@ -8,6 +8,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{6424FE7B-9BB8-41F3-8738-6EF4AED9F0E7}"
 	ProjectSection(SolutionItems) = preProject
 		compose.yaml = compose.yaml
+		.env = .env
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Inma.Tests", "Inma.Tests\Inma.Tests.csproj", "{5D7BCF6F-A151-44FD-89B0-EBB862456836}"

@@ -1,0 +1,6 @@
+﻿services:
+  inma.api:
+    image: inma.api
+    build:
+      context: .
+      dockerfile: Inma.Api/Dockerfile

@@ -1,0 +1,6 @@
+@Inma.Api_HostAddress = http://localhost:5176
+
+GET {{Inma.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

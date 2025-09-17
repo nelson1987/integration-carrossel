@@ -14,5 +14,9 @@ await app.RunAsync();
 
 namespace Inma.Api
 {
+    public partial class Program
+    {
+    }
+
     public record CreateUserCommand(int Id);
 }

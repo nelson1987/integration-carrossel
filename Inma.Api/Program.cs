@@ -5,7 +5,10 @@ var builder = WebApplication.CreateBuilder(args);
 var app = builder.Build();
 
 app.MapGet("/users/{id}", (int id) =>
-    new { Id = id, Name = "João Dev" });
+    id != 1
+        ? Results.NotFound()
+        : Results.Ok(new { Id = id, Name = "João Dev" })
+);
 
 app.MapPost("/users", (CreateUserCommand user) =>
     Results.Created($"/users/{user.Id}", user));
